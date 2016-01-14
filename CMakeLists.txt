@@ -6,6 +6,12 @@ set(REDOX_VERSION_MINOR 3)
 set(REDOX_VERSION_PATCH 0)
 set(REDOX_VERSION_STRING ${REDOX_VERSION_MAJOR}.${REDOX_VERSION_MINOR}.${REDOX_VERSION_PATCH})
 
+
+include_directories(${HIREDIS_INCLUDE_DIR})
+include_directories(${LIBEV_INCLUDE_DIR})
+link_directories(${LIBEV_LIBRARY_DIR})
+link_directories(${HIREDIS_LIBRARY_DIR})
+
 option(lib "Build Redox as a dynamic library." ON)
 option(static_lib "Build Redox as a static library." ON)
 option(tests "Build all tests." OFF)
