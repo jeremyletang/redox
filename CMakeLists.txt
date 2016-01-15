@@ -36,8 +36,8 @@ if(CMAKE_VERSION VERSION_GREATER 2.8.5 OR CMAKE_VERSION VERSION_EQUAL 2.8.5)
 endif()
 
 find_package(Threads REQUIRED)
-find_package(hiredis REQUIRED)
-find_package(libev REQUIRED)
+# find_package(hiredis REQUIRED)
+# find_package(libev REQUIRED)
 
 set(REDOX_LIB_DEPS
   ${HIREDIS_LIBRARIES}
@@ -79,7 +79,7 @@ include_directories(${INC_REDOX_DIR}/redox)
 if (lib)
 
   add_library(redox SHARED ${SRC_REDOX_ALL} ${INC_REDOX_CORE})
-  target_link_libraries(redox ${REDOX_LIB_DEPS})
+  target_link_libraries(redox ${REDOX_LIB_DEPS} hiredis ev)
 
   set_target_properties(redox
     PROPERTIES VERSION ${REDOX_VERSION_STRING}
